@@ -129,8 +129,7 @@ public class ActListaTicket extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id =
-                item.getItemId();
+        int id = item.getItemId();
 
         if (id == R.id.Agenda) {
             // Handle the camera action
