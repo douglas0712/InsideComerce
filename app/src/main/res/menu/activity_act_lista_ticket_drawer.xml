@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/Agenda"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Agenda" />
+        <item
+            android:id="@+id/ListaTicket"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Listar Tickets" />
+
+    </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/Sair"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Sair" />
+        </menu>
+    </item>
+
+</menu>
