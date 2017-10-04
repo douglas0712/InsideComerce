@@ -1,10 +1,13 @@
 package br.com.insidegroup.insidecomerce;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import br.com.insidegroup.insidecomerce.util.Util;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +23,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(it);
             }
         });
+
+
+        Util.showNotification(MainActivity.this, "teste");
+
+
+        //inicia o service
+        Context c = getApplicationContext();
+        Intent intent = new Intent(c, InsideService.class);
+        c.startService(intent);
 
     }
 }
