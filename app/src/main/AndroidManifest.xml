@@ -19,6 +19,10 @@
         <activity
             android:name=".ActListaTicket"
             android:label="@string/title_activity_act_lista_ticket"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ActAceitarTicket"
+            android:label="@string/title_activity_act_edita_item_ticket"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

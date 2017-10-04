@@ -47,8 +47,10 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
         if ((dados != null) && (dados.size() > 0)){
             Ticket Ticket = dados.get(position);
-            holder.txtNome.setText(Ticket.getNome());
+            holder.txtNome.setText(Ticket.getDataCriacao()+" - " +Ticket.getNome());
             holder.txtDescricao.setText(Ticket.getDescricao());
+            holder.txtStatus.setText(Ticket.getStatus());
+
 
         }
 
@@ -76,7 +78,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
         public TextView txtNome;
         public TextView txtDescricao;
-        public ImageView imgOfinica;
+        public TextView txtStatus;
 
 
         public ViewHolderTicket(View intentView) {
@@ -85,6 +87,8 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
             txtNome = (TextView)itemView.findViewById(R.id.txtNome);
             txtDescricao = (TextView)itemView.findViewById(R.id.txtDescricao);
+            txtStatus = (TextView)itemView.findViewById(R.id.txtStatus);
+
 
 
         }

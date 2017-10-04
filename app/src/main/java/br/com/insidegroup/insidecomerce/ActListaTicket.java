@@ -3,8 +3,6 @@ package br.com.insidegroup.insidecomerce;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -23,6 +21,7 @@ import java.util.List;
 import br.com.insidegroup.insidecomerce.entidades.Ticket;
 import br.com.insidegroup.insidecomerce.util.TicketAdapter;
 
+
 public class ActListaTicket extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -30,6 +29,8 @@ public class ActListaTicket extends AppCompatActivity
     private RecyclerView recicleViewListaDados;
     private ConstraintLayout layoutContent;
     private TicketAdapter ticketAdapter;
+
+    public static Ticket ticketSelecionado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class ActListaTicket extends AppCompatActivity
         LinearLayoutManager linear = new LinearLayoutManager(this);
         recicleViewListaDados.setLayoutManager(linear);
 
+
         ExibirListaTicket();
 
     }
@@ -65,15 +67,21 @@ public class ActListaTicket extends AppCompatActivity
 
             final List<Ticket> lstTicket = new ArrayList<>();
 
-            Ticket ticket1= new Ticket();
-            ticket1.setNome("teste ticket 1");
-            ticket1.setDescricao("descricao ticket 1");
+            final Ticket ticket1= new Ticket();
+            ticket1.setNome("Ticket 1");
+            ticket1.setDescricao("Rua XXXXXXXXXX, 1231");
+            ticket1.setDataCriacao("01/01/2017");
+            ticket1.setStatus("Em Aberto");
+
 
             lstTicket.add(ticket1);
 
             Ticket ticket2= new Ticket();
-            ticket2.setNome("teste ticket 2");
-            ticket2.setDescricao("descricao ticket 2");
+            ticket2.setNome("Ticket 2");
+            ticket2.setDescricao("Rua YYYYYYYYYY, 9988");
+            ticket2.setDataCriacao("01/01/2017");
+            ticket2.setStatus("Em Andamento");
+
 
             lstTicket.add(ticket2);
 
@@ -85,8 +93,8 @@ public class ActListaTicket extends AppCompatActivity
             ticketAdapter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    Intent it = new Intent(ActListaTicket.this, ActListaTicket.class);
+                    ticketSelecionado = lstTicket.get(recicleViewListaDados.getChildAdapterPosition(view));
+                    Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
                     startActivity(it);
 
                 }
@@ -113,17 +121,6 @@ public class ActListaTicket extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-//
-
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
