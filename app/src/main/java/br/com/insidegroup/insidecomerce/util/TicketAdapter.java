@@ -50,7 +50,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
         if ((dados != null) && (dados.size() > 0)){
             Ticket Ticket = dados.get(position);
-            holder.txtNome.setText(Ticket.getDataCriacao()+" - " +Ticket.getNome());
+            holder.txtNome.setText(Ticket.getDataCriacao() + " - " + Ticket.getNome());
             holder.txtDescricao.setText(Ticket.getDescricao());
             holder.txtStatus.setText(Ticket.getStatus());
             if(Ticket.getStatus() == "Em Aberto"){

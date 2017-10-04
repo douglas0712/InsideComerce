@@ -32,6 +32,10 @@
         <activity
             android:name=".ActAceitarTicket"
             android:label="@string/title_activity_act_edita_item_ticket"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ActTicketEmAndamento"
+            android:label="@string/title_activity_act_ticket_em_andamento"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
 

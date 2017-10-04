@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="391dp"
+        android:layout_height="216dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="7dp"
+        tools:layout_editor_absoluteX="0dp">
+
+        <RadioButton
+            android:id="@+id/radio_pirates"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="60dp"
+            android:onClick="onRadioButtonClicked"
+            android:text="Reagendar Vistoria" />
+
+        <RadioButton
+            android:id="@+id/radio_ninjas"
+            android:layout_width="227dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:onClick="onRadioButtonClicked"
+            android:text="Cliente cancelou a Vistoria" />
+
+        <RadioButton
+            android:id="@+id/radio_ninjas"
+            android:layout_width="276dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:onClick="onRadioButtonClicked"
+            android:text="Cliente fechou o Contrato" />
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/buttonVoltar"
+        android:layout_width="107dp"
+        android:layout_height="46dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Voltar"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/buttonConfirmar"
+        tools:layout_editor_absoluteY="272dp" />
+
+    <Button
+        android:id="@+id/buttonConfirmar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirmar"
+        android:layout_marginRight="68dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="272dp" />
+
+
+</android.support.constraint.ConstraintLayout>
+

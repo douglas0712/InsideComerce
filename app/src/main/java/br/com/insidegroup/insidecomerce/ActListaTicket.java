@@ -67,7 +67,7 @@ public class ActListaTicket extends AppCompatActivity
 
             final List<Ticket> lstTicket = new ArrayList<>();
 
-            Ticket ticket1= new Ticket();
+            final Ticket ticket1= new Ticket();
             ticket1.setNome("Ticket 1");
             ticket1.setDescricao("Rua XXXXXXXXXX, 1231");
             ticket1.setDataCriacao("01/01/2017");
@@ -113,16 +113,32 @@ public class ActListaTicket extends AppCompatActivity
 
 
 
-
-        TicketAdapter ticketAdapter= new TicketAdapter(lstTicket);
+            TicketAdapter ticketAdapter= new TicketAdapter(lstTicket);
             recicleViewListaDados.setAdapter(ticketAdapter);
 
             ticketAdapter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     ticketSelecionado = lstTicket.get(recicleViewListaDados.getChildAdapterPosition(view));
-                    Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
-                    startActivity(it);
+                    if(ticketSelecionado.getStatus() == "Em Aberto") {
+                        Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
+                        startActivity(it);
+                    }else if(ticketSelecionado.getStatus() == "Em Andamento") {
+                        Intent it = new Intent(ActListaTicket.this, ActTicketEmAndamento.class);
+                        startActivity(it);
+                    }else if(ticketSelecionado.getStatus() == "Contrato Fechado") {
+                        Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
+                        startActivity(it);
+                    }else if(ticketSelecionado.getStatus() == "Nâo Fechou Contrato") {
+                        Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
+                        startActivity(it);
+                    }else if(ticketSelecionado.getStatus() == "Vistoria Reagendada") {
+                        Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
+                        startActivity(it);
+                    }else if(ticketSelecionado.getStatus() == "Cliente Cancelou Vistoria") {
+                        Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
+                        startActivity(it);
+                    }
 
                 }
             });
