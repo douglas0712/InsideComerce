@@ -67,27 +67,54 @@ public class ActListaTicket extends AppCompatActivity
 
             final List<Ticket> lstTicket = new ArrayList<>();
 
-            final Ticket ticket1= new Ticket();
+            Ticket ticket1= new Ticket();
             ticket1.setNome("Ticket 1");
             ticket1.setDescricao("Rua XXXXXXXXXX, 1231");
             ticket1.setDataCriacao("01/01/2017");
             ticket1.setStatus("Em Aberto");
-
-
             lstTicket.add(ticket1);
+
 
             Ticket ticket2= new Ticket();
             ticket2.setNome("Ticket 2");
             ticket2.setDescricao("Rua YYYYYYYYYY, 9988");
             ticket2.setDataCriacao("01/01/2017");
             ticket2.setStatus("Em Andamento");
-
-
             lstTicket.add(ticket2);
 
 
+            Ticket ticket3= new Ticket();
+            ticket3.setNome("Ticket 3");
+            ticket3.setDescricao("Rua GGGGGGG, 9988");
+            ticket3.setDataCriacao("01/01/2017");
+            ticket3.setStatus("Contrato Fechado");
+            lstTicket.add(ticket3);
 
-            TicketAdapter ticketAdapter= new TicketAdapter(lstTicket);
+            Ticket ticket4= new Ticket();
+            ticket4.setNome("Ticket 4");
+            ticket4.setDescricao("Rua GGGGGGG, 9988");
+            ticket4.setDataCriacao("01/01/2017");
+            ticket4.setStatus("Nâo Fechou Contrato");
+            lstTicket.add(ticket4);
+
+            Ticket ticket5= new Ticket();
+            ticket5.setNome("Ticket 5");
+            ticket5.setDescricao("Rua GGGGGGG, 9988");
+            ticket5.setDataCriacao("01/01/2017");
+            ticket5.setStatus("Vistoria Reagendada");
+            lstTicket.add(ticket5);
+
+            Ticket ticket6= new Ticket();
+            ticket6.setNome("Ticket 6");
+            ticket6.setDescricao("Rua GGGGGGG, 9988");
+            ticket6.setDataCriacao("01/01/2017");
+            ticket6.setStatus("Cliente Cancelou Vistoria");
+            lstTicket.add(ticket6);
+
+
+
+
+        TicketAdapter ticketAdapter= new TicketAdapter(lstTicket);
             recicleViewListaDados.setAdapter(ticketAdapter);
 
             ticketAdapter.setOnClickListener(new View.OnClickListener() {

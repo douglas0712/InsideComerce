@@ -3,7 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorAceitar_Verde">#30c446</color>
-    <color name="colorRecusar_Vermelho">#e62734</color>
+    <color name="colorAceitar_Verde">#8b36da4e</color>
+    <color name="colorRecusar_Vermelho">#a3ed0f1f</color>
+
+    <color name="TesteDeCor">#ad999595</color>
 
 </resources>

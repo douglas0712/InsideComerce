@@ -7,15 +7,16 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="145dp"
+        android:layout_height="130dp"
         android:layout_marginTop="5dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="6dp"
         app:cardUseCompatPadding="true">
 
         <LinearLayout
+            android:id="@+id/linearLayoutTicket"
             android:layout_width="match_parent"
-            android:layout_height="115dp"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:weightSum="1">
 
@@ -31,9 +32,9 @@
             <TextView
                 android:id="@+id/txtDescricao"
                 android:layout_width="180dp"
-                android:layout_marginTop="8dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
                 android:text="descricao" />
 
             <TextView
@@ -42,6 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="" />
+
             <TextView
                 android:id="@+id/txtEspaco2"
                 android:layout_width="180dp"

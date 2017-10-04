@@ -2,6 +2,8 @@ package br.com.insidegroup.insidecomerce.util;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -50,14 +53,22 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
             holder.txtNome.setText(Ticket.getDataCriacao()+" - " +Ticket.getNome());
             holder.txtDescricao.setText(Ticket.getDescricao());
             holder.txtStatus.setText(Ticket.getStatus());
-
-
+            if(Ticket.getStatus() == "Em Aberto"){
+                holder.ticket.setBackgroundColor(Color.parseColor("#1dd11a"));
+            }else if(Ticket.getStatus() == "Em Andamento"){
+                holder.ticket.setBackgroundColor(Color.parseColor("#fff155"));
+            }else if(Ticket.getStatus() == "Contrato Fechado"){
+                holder.ticket.setBackgroundColor(Color.parseColor("#AA2426C6"));
+            }else if(Ticket.getStatus() == "Nâo Fechou Contrato"){
+                holder.ticket.setBackgroundColor(Color.parseColor("#a3ed0f1f"));
+            }else if(Ticket.getStatus() == "Vistoria Reagendada"){
+                holder.ticket.setBackgroundColor(Color.parseColor("#adf29d0a"));
+            }else if(Ticket.getStatus() == "Cliente Cancelou Vistoria"){
+                holder.ticket.setBackgroundColor(Color.parseColor("#ad999595"));
+            }
         }
 
     }
-
-
-
 
     @Override
     public int getItemCount() {
@@ -79,6 +90,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         public TextView txtNome;
         public TextView txtDescricao;
         public TextView txtStatus;
+        public LinearLayout ticket;
 
 
         public ViewHolderTicket(View intentView) {
@@ -88,6 +100,8 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
             txtNome = (TextView)itemView.findViewById(R.id.txtNome);
             txtDescricao = (TextView)itemView.findViewById(R.id.txtDescricao);
             txtStatus = (TextView)itemView.findViewById(R.id.txtStatus);
+            ticket = (LinearLayout)itemView.findViewById(R.id.linearLayoutTicket);
+
 
 
 
