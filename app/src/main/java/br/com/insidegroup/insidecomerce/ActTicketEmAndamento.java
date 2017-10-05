@@ -1,23 +1,28 @@
 package br.com.insidegroup.insidecomerce;
 
 import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 import br.com.insidegroup.insidecomerce.R;
 
 public class ActTicketEmAndamento extends AppCompatActivity {
 
     private AlertDialog alerta;
+    private int statusSelecionado = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,7 @@ public class ActTicketEmAndamento extends AppCompatActivity {
     private void dialogStatus() {
         //LayoutInflater é utilizado para inflar nosso layout em uma view.
         //-pegamos nossa instancia da classe
+        statusSelecionado = 0;
         LayoutInflater li = getLayoutInflater();
 
         //inflamos o layout alerta.xml na view
@@ -49,11 +55,21 @@ public class ActTicketEmAndamento extends AppCompatActivity {
         //definimos para o botão do layout um clickListener
         view.findViewById(R.id.buttonConfirmar).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                //exibe um Toast informativo.
-                Toast.makeText(ActTicketEmAndamento.this, "Ação Confirmada", Toast.LENGTH_SHORT).show();
-                //desfaz o alerta.
-                alerta.dismiss();
-                finish();
+
+                if(statusSelecionado == 0){
+                    Toast.makeText(ActTicketEmAndamento.this, "Selecione uma das opções", Toast.LENGTH_LONG).show();
+                }else{
+                    //Se for selecionado reagendada, chama modal de datas
+                    if(statusSelecionado == 6){
+                        //desfaz o alerta.
+                        alerta.dismiss();
+                        finish();
+
+
+                    }
+
+                }
+
             }
         });
 
@@ -77,18 +93,17 @@ public class ActTicketEmAndamento extends AppCompatActivity {
 
                 switch (item) {
                     case 0:
-                        // Your code when first option seletced
+                        statusSelecionado = 6;
                         break;
                     case 1:
-                        // Your code when 2nd  option seletced
-
+                        statusSelecionado = 3;
                         break;
                     case 2:
-                        // Your code when 3rd option seletced
+                        statusSelecionado = 5;
                         break;
 
                 }
-                alerta.dismiss();
+
             }
             });
 

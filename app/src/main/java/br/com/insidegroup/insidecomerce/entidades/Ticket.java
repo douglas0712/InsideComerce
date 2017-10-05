@@ -1,7 +1,16 @@
 package br.com.insidegroup.insidecomerce.entidades;
 
 import java.util.Date;
+/*
+Os status dos tickets
+    1 - em aberto
+    2 - em atendimento
+    3 - cliente cancelou vistoria
+    4 - cliente recusou contrato
+    5 - cliente fechou contrato
+    6 - Vistoria reagendada
 
+ */
 public class Ticket {
 
 

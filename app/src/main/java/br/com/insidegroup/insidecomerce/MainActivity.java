@@ -25,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Util.showNotification(MainActivity.this, "teste");
+        //Util.showNotification(MainActivity.this, "teste");
 
 
         //inicia o service
-        Context c = getApplicationContext();
-        Intent intent = new Intent(c, InsideService.class);
-        c.startService(intent);
+        //Context c = getApplicationContext();
+        //Intent intent = new Intent(c, InsideService.class);
+        //c.startService(intent);
 
     }
 }
