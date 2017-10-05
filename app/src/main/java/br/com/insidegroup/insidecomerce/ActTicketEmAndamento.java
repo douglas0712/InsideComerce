@@ -1,6 +1,7 @@
 package br.com.insidegroup.insidecomerce;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import br.com.insidegroup.insidecomerce.R;
@@ -48,7 +50,7 @@ public class ActTicketEmAndamento extends AppCompatActivity {
         view.findViewById(R.id.buttonConfirmar).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 //exibe um Toast informativo.
-                Toast.makeText(ActTicketEmAndamento.this, "Ticket Recusado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActTicketEmAndamento.this, "Ação Confirmada", Toast.LENGTH_SHORT).show();
                 //desfaz o alerta.
                 alerta.dismiss();
                 finish();
@@ -61,11 +63,39 @@ public class ActTicketEmAndamento extends AppCompatActivity {
             }
         });
 
+
+
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Titulo");
+        builder.setTitle("Sequencia de Atendimento");
         builder.setView(view);
+
+        final CharSequence[] items = {"Reagendar Atendimento","Cliente cancelou a Vistoria","Cliente Fechou Contrato"};
+        builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+
+
+                switch (item) {
+                    case 0:
+                        // Your code when first option seletced
+                        break;
+                    case 1:
+                        // Your code when 2nd  option seletced
+
+                        break;
+                    case 2:
+                        // Your code when 3rd option seletced
+                        break;
+
+                }
+                alerta.dismiss();
+            }
+            });
+
+
         alerta = builder.create();
         alerta.show();
     }
+
 
 }

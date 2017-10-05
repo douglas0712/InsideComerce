@@ -68,7 +68,7 @@ public class ActAceitarTicket extends AppCompatActivity {
         });
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Titulo");
+        builder.setTitle("Motivo parar Recusa do Ticket");
         builder.setView(view);
         alerta = builder.create();
         alerta.show();

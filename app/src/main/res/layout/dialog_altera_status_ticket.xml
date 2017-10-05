@@ -7,61 +7,39 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
-    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="391dp"
-        android:layout_height="216dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="7dp"
-        tools:layout_editor_absoluteX="0dp">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="359dp"
+        android:layout_height="344dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="32dp">
 
-        <RadioButton
-            android:id="@+id/radio_pirates"
-            android:layout_width="225dp"
+        <Button
+            android:id="@+id/buttonVoltar"
+            android:layout_width="107dp"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="59dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Voltar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/buttonConfirmar" />
+
+        <Button
+            android:id="@+id/buttonConfirmar"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:layout_marginLeft="60dp"
-            android:onClick="onRadioButtonClicked"
-            android:text="Reagendar Vistoria" />
-
-        <RadioButton
-            android:id="@+id/radio_ninjas"
-            android:layout_width="227dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:onClick="onRadioButtonClicked"
-            android:text="Cliente cancelou a Vistoria" />
-
-        <RadioButton
-            android:id="@+id/radio_ninjas"
-            android:layout_width="276dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:onClick="onRadioButtonClicked"
-            android:text="Cliente fechou o Contrato" />
-    </RadioGroup>
-
-
-    <Button
-        android:id="@+id/buttonVoltar"
-        android:layout_width="107dp"
-        android:layout_height="46dp"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Voltar"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/buttonConfirmar"
-        tools:layout_editor_absoluteY="272dp" />
-
-    <Button
-        android:id="@+id/buttonConfirmar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Confirmar"
-        android:layout_marginRight="68dp"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="272dp" />
+            android:layout_marginBottom="59dp"
+            android:layout_marginEnd="87dp"
+            android:layout_marginRight="8dp"
+            android:text="Confirmar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </android.support.constraint.ConstraintLayout>
 
 
 </android.support.constraint.ConstraintLayout>
