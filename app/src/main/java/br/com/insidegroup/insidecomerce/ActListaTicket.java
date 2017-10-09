@@ -111,6 +111,13 @@ public class ActListaTicket extends AppCompatActivity
             ticket6.setStatus("Cliente Cancelou Vistoria");
             lstTicket.add(ticket6);
 
+            Ticket ticket7= new Ticket();
+            ticket7.setNome("Ticket 7");
+            ticket7.setDescricao("Rua GGGGGGG, 9988");
+            ticket7.setDataCriacao("01/01/2017");
+            ticket7.setStatus("Vendedor Recusou");
+            lstTicket.add(ticket7);
+
 
 
             TicketAdapter ticketAdapter= new TicketAdapter(lstTicket);
@@ -136,6 +143,9 @@ public class ActListaTicket extends AppCompatActivity
                         Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
                         startActivity(it);
                     }else if(ticketSelecionado.getStatus() == "Cliente Cancelou Vistoria") {
+                        Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
+                        startActivity(it);
+                    }else if(ticketSelecionado.getStatus() == "Vendedor Recusou") {
                         Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
                         startActivity(it);
                     }
@@ -172,7 +182,8 @@ public class ActListaTicket extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.Agenda) {
-            // Handle the camera action
+            Intent it = new Intent(ActListaTicket.this, ActAgenda.class);
+            startActivity(it);
         } else if (id == R.id.ListaTicket) {
 
         } else if (id == R.id.Sair) {

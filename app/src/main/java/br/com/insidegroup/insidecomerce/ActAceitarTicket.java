@@ -53,11 +53,10 @@ public class ActAceitarTicket extends AppCompatActivity {
         //definimos para o botão do layout um clickListener
         view.findViewById(R.id.buttonConfirmar).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-                //exibe um Toast informativo.
-                Toast.makeText(ActAceitarTicket.this, "Ticket Recusado", Toast.LENGTH_SHORT).show();
-                //desfaz o alerta.
                 alerta.dismiss();
                 finish();
+                Toast.makeText(ActAceitarTicket.this, "Ticket Recusado", Toast.LENGTH_SHORT).show();
+
             }
         });
 

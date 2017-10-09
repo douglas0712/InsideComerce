@@ -51,8 +51,8 @@
         </receiver>
 
         <activity
-            android:name=".util.DataHora"
-            android:label="@string/title_activity_data_hora"
+            android:name=".ActAgenda"
+            android:label="@string/title_activity_act_agenda"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

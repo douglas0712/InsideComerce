@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.insidegroup.insidecomerce.util.DataHora">
+    tools:context="br.com.insidegroup.insidecomerce.ActAgenda">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -20,6 +20,23 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_data_hora" />
+    <include layout="@layout/content_act_agenda" />
+
+
+    <com.github.sundeepk.compactcalendarview.CompactCalendarView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/compactcalendar_view"
+        android:layout_width="fill_parent"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_height="378dp"
+        app:compactCalendarTargetHeight="350dp"
+        app:compactCalendarTextSize="18sp"
+        app:compactCalendarBackgroundColor="#ffffff"
+        app:compactCalendarTextColor="#151414"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
+        app:compactCalendarCurrentDayBackgroundColor="#f44f4f"
+        app:compactCalendarMultiEventIndicatorColor="#fff"
+        />
 
 </android.support.design.widget.CoordinatorLayout>

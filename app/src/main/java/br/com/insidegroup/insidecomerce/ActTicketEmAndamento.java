@@ -1,6 +1,7 @@
 package br.com.insidegroup.insidecomerce;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -23,6 +26,8 @@ public class ActTicketEmAndamento extends AppCompatActivity {
 
     private AlertDialog alerta;
     private int statusSelecionado = 0;
+    private int dia, mes, ano, hora, minutos;
+    private EditText data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,7 @@ public class ActTicketEmAndamento extends AppCompatActivity {
         //inflamos o layout alerta.xml na view
         View view = li.inflate(R.layout.dialog_altera_status_ticket, null);
         //definimos para o botão do layout um clickListener
+        data = (EditText) view.findViewById(R.id.edata);
         view.findViewById(R.id.buttonConfirmar).setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
 
@@ -61,11 +67,32 @@ public class ActTicketEmAndamento extends AppCompatActivity {
                 }else{
                     //Se for selecionado reagendada, chama modal de datas
                     if(statusSelecionado == 6){
+
                         //desfaz o alerta.
+                        final Calendar c = Calendar.getInstance();
+                        dia = c.get(Calendar.DAY_OF_MONTH);
+                        mes = c.get(Calendar.MONTH);
+                        ano = c.get(Calendar.YEAR);
+
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(ActTicketEmAndamento.this, new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                data.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                                alerta.dismiss();
+
+                            }
+                        }, dia, mes, ano);
+
+                        datePickerDialog.show();
+                    }
+                    else if(statusSelecionado == 3){
+
                         alerta.dismiss();
                         finish();
 
-
+                    }else if(statusSelecionado == 5){
+                        alerta.dismiss();
+                        finish();
                     }
 
                 }
@@ -86,20 +113,24 @@ public class ActTicketEmAndamento extends AppCompatActivity {
         builder.setTitle("Sequencia de Atendimento");
         builder.setView(view);
 
-        final CharSequence[] items = {"Reagendar Atendimento","Cliente cancelou a Vistoria","Cliente Fechou Contrato"};
+        final CharSequence[] items = {"Cliente cancelou a Vistoria", "Cliente Recusou o Contrato", "Cliente Fechou Contrato", "Reagendar Atendimento"};
         builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
 
 
                 switch (item) {
+
                     case 0:
-                        statusSelecionado = 6;
+                        statusSelecionado = 3;
                         break;
                     case 1:
-                        statusSelecionado = 3;
+                        statusSelecionado = 4;
                         break;
                     case 2:
                         statusSelecionado = 5;
+                        break;
+                    case 3:
+                        statusSelecionado = 6;
                         break;
 
                 }

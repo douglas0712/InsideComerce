@@ -10,8 +10,8 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="359dp"
         android:layout_height="344dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="32dp">
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="3dp">
 
         <Button
             android:id="@+id/buttonVoltar"

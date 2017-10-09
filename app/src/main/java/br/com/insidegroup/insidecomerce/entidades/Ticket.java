@@ -9,6 +9,7 @@ Os status dos tickets
     4 - cliente recusou contrato
     5 - cliente fechou contrato
     6 - Vistoria reagendada
+    7 - Vendedor Recusou
 
  */
 public class Ticket {
