@@ -56,7 +56,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
 
             holder.txtNome.setText(Ticket.getDataCriacao() + " - " + descricaoStatus);
-            holder.txtDescricao.setText("Rua: "+ Ticket.getRua() + ", "+ Ticket.getNumero() + " - "+ Ticket.getBairro());
+            holder.txtDescricao.setText(Ticket.getRua() + ", "+ Ticket.getNumero() + "\n"+ Ticket.getBairro());
             //holder.txtStatus.setText(Ticket.getStatus());
             if(Ticket.getStatus() == 1){
                 holder.coresStatus.setBackgroundColor(Color.parseColor("#FFB1FF84"));
