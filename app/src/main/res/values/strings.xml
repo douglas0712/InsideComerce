@@ -9,4 +9,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_act_edita_item_ticket">ActEditaItemTicket</string>
     <string name="title_activity_act_ticket_em_andamento">ActTicketEmAndamento</string>
+    <string name="title_activity_data_hora">DataHora</string>
+    <string name="title_activity_data_hora2">DataHora2</string>
+    <string name="title_activity_act_agenda">ActAgenda</string>
 </resources>

@@ -19,6 +19,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.insidegroup.insidecomerce.R;
+import br.com.insidegroup.insidecomerce.entidades.DescricaoStatuTicket;
 import br.com.insidegroup.insidecomerce.entidades.Ticket;
 
 
@@ -48,23 +49,29 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     public void onBindViewHolder(TicketAdapter.ViewHolderTicket holder, int position) {
 
 
+
         if ((dados != null) && (dados.size() > 0)){
             Ticket Ticket = dados.get(position);
-            holder.txtNome.setText(Ticket.getDataCriacao() + " - " + Ticket.getNome());
-            holder.txtDescricao.setText(Ticket.getDescricao());
-            holder.txtStatus.setText(Ticket.getStatus());
-            if(Ticket.getStatus() == "Em Aberto"){
-                holder.ticket.setBackgroundColor(Color.parseColor("#1dd11a"));
-            }else if(Ticket.getStatus() == "Em Andamento"){
-                holder.ticket.setBackgroundColor(Color.parseColor("#fff155"));
-            }else if(Ticket.getStatus() == "Contrato Fechado"){
-                holder.ticket.setBackgroundColor(Color.parseColor("#AA2426C6"));
-            }else if(Ticket.getStatus() == "Nâo Fechou Contrato"){
-                holder.ticket.setBackgroundColor(Color.parseColor("#a3ed0f1f"));
-            }else if(Ticket.getStatus() == "Vistoria Reagendada"){
-                holder.ticket.setBackgroundColor(Color.parseColor("#adf29d0a"));
-            }else if(Ticket.getStatus() == "Cliente Cancelou Vistoria"){
-                holder.ticket.setBackgroundColor(Color.parseColor("#ad999595"));
+            String descricaoStatus = DescricaoStatuTicket.descricaoStatusTicket(Ticket.getStatus());
+
+
+            holder.txtNome.setText(Ticket.getDataCriacao() + " - " + descricaoStatus);
+            holder.txtDescricao.setText("Rua: "+ Ticket.getRua() + ", "+ Ticket.getNumero() + " - "+ Ticket.getBairro());
+            //holder.txtStatus.setText(Ticket.getStatus());
+            if(Ticket.getStatus() == 1){
+                holder.coresStatus.setBackgroundColor(Color.parseColor("#FFB1FF84"));
+            }else if(Ticket.getStatus() == 2){
+                holder.coresStatus.setBackgroundColor(Color.parseColor("#FFFFF68F"));
+            }else if(Ticket.getStatus() == 3){
+                holder.coresStatus.setBackgroundColor(Color.parseColor("#FFCED2D9"));
+            }else if(Ticket.getStatus() == 4){
+                holder.coresStatus.setBackgroundColor(Color.parseColor("#FFFF566C"));
+            }else if(Ticket.getStatus() == 5){
+                holder.coresStatus.setBackgroundColor(Color.parseColor("#FF9FC3F5"));
+            }else if(Ticket.getStatus() == 6){
+                holder.coresStatus.setBackgroundColor(Color.parseColor("#FFFFAF68"));
+            }else if(Ticket.getStatus() == 7){
+                holder.coresStatus.setBackgroundColor(Color.parseColor("#FF383838"));
             }
         }
 
@@ -89,8 +96,8 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
         public TextView txtNome;
         public TextView txtDescricao;
-        public TextView txtStatus;
         public LinearLayout ticket;
+        public TextView coresStatus;
 
 
         public ViewHolderTicket(View intentView) {
@@ -99,8 +106,8 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
             txtNome = (TextView)itemView.findViewById(R.id.txtNome);
             txtDescricao = (TextView)itemView.findViewById(R.id.txtDescricao);
-            txtStatus = (TextView)itemView.findViewById(R.id.txtStatus);
             ticket = (LinearLayout)itemView.findViewById(R.id.linearLayoutTicket);
+            coresStatus = (TextView) itemView.findViewById(R.id.textCores);
 
 
 

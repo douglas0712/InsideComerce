@@ -14,10 +14,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.insidegroup.insidecomerce.Controles.Conexao;
+import br.com.insidegroup.insidecomerce.entidades.Sessao;
 import br.com.insidegroup.insidecomerce.entidades.Ticket;
 import br.com.insidegroup.insidecomerce.util.TicketAdapter;
 
@@ -28,7 +35,6 @@ public class ActListaTicket extends AppCompatActivity
 
     private RecyclerView recicleViewListaDados;
     private ConstraintLayout layoutContent;
-    private TicketAdapter ticketAdapter;
 
     public static Ticket ticketSelecionado;
 
@@ -62,86 +68,77 @@ public class ActListaTicket extends AppCompatActivity
     public void ExibirListaTicket() {
 
 
-            ActListaTicket.this.setTitle("Lista de Tickets");
+        ActListaTicket.this.setTitle("Lista de Tickets");
+        final List<Ticket> lstTicket = new ArrayList<>();
+        final Sessao sessao = Sessao.getInstance();
+
+        Connection con = Conexao.getConnection();
+        Statement stmt = null;
+        ResultSet rs = null;
+        String sql = "";
+        try {
+            if(con == null){
+                Toast.makeText(ActListaTicket.this, "Verifique sua conexão.", Toast.LENGTH_SHORT).show();
+            }
+            stmt = con.createStatement();
 
 
-            final List<Ticket> lstTicket = new ArrayList<>();
+            sql = "SELECT * FROM TICKET WHERE VENDEDORVINCULADO = '"+ sessao.getCodUsuario() +"'";
+            rs = stmt.executeQuery(sql);
 
-            final Ticket ticket1= new Ticket();
-            ticket1.setNome("Ticket 1");
-            ticket1.setDescricao("Rua XXXXXXXXXX, 1231");
-            ticket1.setDataCriacao("01/01/2017");
-            ticket1.setStatus("Em Aberto");
-            lstTicket.add(ticket1);
+            while(rs.next()){
+                Ticket ticket = new Ticket();
+                ticket.setStatus(rs.getInt("status"));
+                ticket.setRua(rs.getString("rua"));
+                ticket.setNumero(rs.getString("numero"));
+                ticket.setBairro(rs.getString("bairro"));
+                ticket.setCidade(rs.getString("cidade"));
+                ticket.setEstado(rs.getString("estado"));
+                ticket.setDataCriacao(rs.getString("datacriacao"));
+                ticket.setNomeContato(rs.getString("nomeContato"));
+                ticket.setTelefoneContato(rs.getString("telefoneContato"));
+                ticket.setIdTicket(rs.getInt("id"));
+                lstTicket.add(ticket);
 
-
-            Ticket ticket2= new Ticket();
-            ticket2.setNome("Ticket 2");
-            ticket2.setDescricao("Rua YYYYYYYYYY, 9988");
-            ticket2.setDataCriacao("01/01/2017");
-            ticket2.setStatus("Em Andamento");
-            lstTicket.add(ticket2);
-
-
-            Ticket ticket3= new Ticket();
-            ticket3.setNome("Ticket 3");
-            ticket3.setDescricao("Rua GGGGGGG, 9988");
-            ticket3.setDataCriacao("01/01/2017");
-            ticket3.setStatus("Contrato Fechado");
-            lstTicket.add(ticket3);
-
-            Ticket ticket4= new Ticket();
-            ticket4.setNome("Ticket 4");
-            ticket4.setDescricao("Rua GGGGGGG, 9988");
-            ticket4.setDataCriacao("01/01/2017");
-            ticket4.setStatus("Nâo Fechou Contrato");
-            lstTicket.add(ticket4);
-
-            Ticket ticket5= new Ticket();
-            ticket5.setNome("Ticket 5");
-            ticket5.setDescricao("Rua GGGGGGG, 9988");
-            ticket5.setDataCriacao("01/01/2017");
-            ticket5.setStatus("Vistoria Reagendada");
-            lstTicket.add(ticket5);
-
-            Ticket ticket6= new Ticket();
-            ticket6.setNome("Ticket 6");
-            ticket6.setDescricao("Rua GGGGGGG, 9988");
-            ticket6.setDataCriacao("01/01/2017");
-            ticket6.setStatus("Cliente Cancelou Vistoria");
-            lstTicket.add(ticket6);
+            }
 
 
 
-            TicketAdapter ticketAdapter= new TicketAdapter(lstTicket);
-            recicleViewListaDados.setAdapter(ticketAdapter);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-            ticketAdapter.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ticketSelecionado = lstTicket.get(recicleViewListaDados.getChildAdapterPosition(view));
-                    if(ticketSelecionado.getStatus() == "Em Aberto") {
-                        Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
-                        startActivity(it);
-                    }else if(ticketSelecionado.getStatus() == "Em Andamento") {
-                        Intent it = new Intent(ActListaTicket.this, ActTicketEmAndamento.class);
-                        startActivity(it);
-                    }else if(ticketSelecionado.getStatus() == "Contrato Fechado") {
-                        Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
-                        startActivity(it);
-                    }else if(ticketSelecionado.getStatus() == "Nâo Fechou Contrato") {
-                        Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
-                        startActivity(it);
-                    }else if(ticketSelecionado.getStatus() == "Vistoria Reagendada") {
-                        Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
-                        startActivity(it);
-                    }else if(ticketSelecionado.getStatus() == "Cliente Cancelou Vistoria") {
-                        Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
-                        startActivity(it);
-                    }
+
+
+        TicketAdapter ticketAdapter= new TicketAdapter(lstTicket);
+        recicleViewListaDados.setAdapter(ticketAdapter);
+
+        ticketAdapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ticketSelecionado = lstTicket.get(recicleViewListaDados.getChildAdapterPosition(view));
+                if(ticketSelecionado.getStatus() == 1) {
+                    sessao.setTicket(ticketSelecionado);
+                    Intent it = new Intent(ActListaTicket.this, ActAceitarTicket.class);
+                    startActivity(it);
+                }else if(ticketSelecionado.getStatus() == 2) {
+                    sessao.setTicket(ticketSelecionado);
+                    Intent it = new Intent(ActListaTicket.this, ActTicketEmAndamento.class);
+                    startActivity(it);
+                }else if(ticketSelecionado.getStatus() == 3) {
+
+                }else if(ticketSelecionado.getStatus() == 4) {
+
+                }else if(ticketSelecionado.getStatus() == 5) {
+
+                }else if(ticketSelecionado.getStatus() == 6) {
+
+                }else if(ticketSelecionado.getStatus() == 7) {
 
                 }
-            });
+
+            }
+        });
 
 
     }
@@ -172,7 +169,8 @@ public class ActListaTicket extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.Agenda) {
-            // Handle the camera action
+            Intent it = new Intent(ActListaTicket.this, ActAgenda.class);
+            startActivity(it);
         } else if (id == R.id.ListaTicket) {
 
         } else if (id == R.id.Sair) {
