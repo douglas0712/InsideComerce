@@ -9,6 +9,7 @@
     tools:context="br.com.insidegroup.insidecomerce.ActListaTicket"
     tools:showIn="@layout/app_bar_act_lista_ticket">
 
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycleListaTicket"
         android:layout_width="368dp"
