@@ -19,6 +19,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.insidegroup.insidecomerce.R;
+import br.com.insidegroup.insidecomerce.entidades.DescricaoStatuTicket;
 import br.com.insidegroup.insidecomerce.entidades.Ticket;
 
 
@@ -48,24 +49,28 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     public void onBindViewHolder(TicketAdapter.ViewHolderTicket holder, int position) {
 
 
+
         if ((dados != null) && (dados.size() > 0)){
             Ticket Ticket = dados.get(position);
-            holder.txtNome.setText(Ticket.getDataCriacao() + " - " + Ticket.getStatus());
-            holder.txtDescricao.setText(Ticket.getDescricao());
+            String descricaoStatus = DescricaoStatuTicket.descricaoStatusTicket(Ticket.getStatus());
+
+
+            holder.txtNome.setText(Ticket.getDataCriacao() + " - " + descricaoStatus);
+            holder.txtDescricao.setText("Rua: "+ Ticket.getRua() + ", "+ Ticket.getNumero() + " - "+ Ticket.getBairro());
             //holder.txtStatus.setText(Ticket.getStatus());
-            if(Ticket.getStatus() == "Em Aberto"){
+            if(Ticket.getStatus() == 1){
                 holder.coresStatus.setBackgroundColor(Color.parseColor("#FFB1FF84"));
-            }else if(Ticket.getStatus() == "Em Andamento"){
+            }else if(Ticket.getStatus() == 2){
                 holder.coresStatus.setBackgroundColor(Color.parseColor("#FFFFF68F"));
-            }else if(Ticket.getStatus() == "Contrato Fechado"){
-                holder.coresStatus.setBackgroundColor(Color.parseColor("#FF9FC3F5"));
-            }else if(Ticket.getStatus() == "Nâo Fechou Contrato"){
-                holder.coresStatus.setBackgroundColor(Color.parseColor("#FFFF566C"));
-            }else if(Ticket.getStatus() == "Vistoria Reagendada"){
-                holder.coresStatus.setBackgroundColor(Color.parseColor("#FFFFAF68"));
-            }else if(Ticket.getStatus() == "Cliente Cancelou Vistoria"){
+            }else if(Ticket.getStatus() == 3){
                 holder.coresStatus.setBackgroundColor(Color.parseColor("#FFCED2D9"));
-            }else if(Ticket.getStatus() == "Vendedor Recusou"){
+            }else if(Ticket.getStatus() == 4){
+                holder.coresStatus.setBackgroundColor(Color.parseColor("#FFFF566C"));
+            }else if(Ticket.getStatus() == 5){
+                holder.coresStatus.setBackgroundColor(Color.parseColor("#FF9FC3F5"));
+            }else if(Ticket.getStatus() == 6){
+                holder.coresStatus.setBackgroundColor(Color.parseColor("#FFFFAF68"));
+            }else if(Ticket.getStatus() == 7){
                 holder.coresStatus.setBackgroundColor(Color.parseColor("#FF383838"));
             }
         }

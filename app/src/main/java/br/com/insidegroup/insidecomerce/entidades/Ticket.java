@@ -16,18 +16,19 @@ public class Ticket {
 
 
 
-    private String nome;
-    private String descricao;
+    private int idTicket;
     private String dataCriacao;
-    private String status;
+    private int status;
+    private String rua;
+    private String numero;
+    private String complemento;
+    private String bairro;
+    private String cidade;
+    private String estado;
+    private String nomeContato;
+    private String telefoneContato;
 
-    public String getStatus() {
-        return status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getDataCriacao() {
         return dataCriacao;
@@ -37,23 +38,85 @@ public class Ticket {
         this.dataCriacao = dataCriacao;
     }
 
-    public String getNome() {
-
-        return nome;
+    public int getStatus() {
+        return status;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getRua() {
+        return rua;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setRua(String rua) {
+        this.rua = rua;
     }
 
+    public String getNumero() {
+        return numero;
+    }
 
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getNomeContato() {
+        return nomeContato;
+    }
+
+    public void setNomeContato(String nomeContato) {
+        this.nomeContato = nomeContato;
+    }
+
+    public String getTelefoneContato() {
+        return telefoneContato;
+    }
+
+    public void setTelefoneContato(String telefoneContato) {
+        this.telefoneContato = telefoneContato;
+    }
+
+    public int getIdTicket() {
+        return idTicket;
+    }
+
+    public void setIdTicket(int idTicket) {
+        this.idTicket = idTicket;
+    }
 }
+
 

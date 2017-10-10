@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/editTextMotivoRecusa"
         android:layout_width="291dp"
         android:layout_height="218dp"
         android:layout_weight="0.46"
@@ -37,7 +37,7 @@
         app:layout_constraintHorizontal_bias="0.741"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/buttonConfirmar"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextMotivoRecusa" />
 
     <Button
         android:id="@+id/buttonConfirmar"
@@ -47,7 +47,7 @@
         android:layout_marginRight="73dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="56dp"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextMotivoRecusa" />
 
 
 </android.support.constraint.ConstraintLayout>
