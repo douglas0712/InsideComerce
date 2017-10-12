@@ -24,9 +24,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.insidegroup.insidecomerce.Controles.Conexao;
+import br.com.insidegroup.insidecomerce.Controles.ControleTicket;
+import br.com.insidegroup.insidecomerce.DAO.DAOTIcket;
 import br.com.insidegroup.insidecomerce.entidades.Sessao;
 import br.com.insidegroup.insidecomerce.entidades.Ticket;
+import br.com.insidegroup.insidecomerce.util.Erro;
 import br.com.insidegroup.insidecomerce.util.TicketAdapter;
+import br.com.insidegroup.insidecomerce.util.Util;
 
 
 public class ActListaTicket extends AppCompatActivity
@@ -69,46 +73,24 @@ public class ActListaTicket extends AppCompatActivity
 
 
         ActListaTicket.this.setTitle("Lista de Tickets");
-        final List<Ticket> lstTicket = new ArrayList<>();
-        final Sessao sessao = Sessao.getInstance();
+        final Sessao sessao= Sessao.getInstance();
 
-        Connection con = Conexao.getConnection();
-        Statement stmt = null;
-        ResultSet rs = null;
-        String sql = "";
+
+
         try {
-            if(con == null){
-                Toast.makeText(ActListaTicket.this, "Verifique sua conexão.", Toast.LENGTH_SHORT).show();
-            }
-            stmt = con.createStatement();
+            List<Ticket> lstTicket = ControleTicket.getListaTicket(sessao.getCodUsuario());
+            setarListaTicketNoAdaptador(lstTicket, sessao);
+        } catch (Erro erro) {
 
-
-            sql = "SELECT * FROM TICKET WHERE VENDEDORVINCULADO = '"+ sessao.getCodUsuario() +"'";
-            rs = stmt.executeQuery(sql);
-
-            while(rs.next()){
-                Ticket ticket = new Ticket();
-                ticket.setStatus(rs.getInt("status"));
-                ticket.setRua(rs.getString("rua"));
-                ticket.setNumero(rs.getString("numero"));
-                ticket.setBairro(rs.getString("bairro"));
-                ticket.setCidade(rs.getString("cidade"));
-                ticket.setEstado(rs.getString("estado"));
-                ticket.setDataCriacao(rs.getString("datacriacao"));
-                ticket.setNomeContato(rs.getString("nomeContato"));
-                ticket.setTelefoneContato(rs.getString("telefoneContato"));
-                ticket.setIdTicket(rs.getInt("id"));
-                lstTicket.add(ticket);
-
-            }
-
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+            Util.ExibirMensagemNaTela(ActListaTicket.this, erro.getMsg());
         }
 
 
+
+    }
+
+
+    public void setarListaTicketNoAdaptador(final List<Ticket> lstTicket, final Sessao sessao) {
 
         TicketAdapter ticketAdapter= new TicketAdapter(lstTicket);
         recicleViewListaDados.setAdapter(ticketAdapter);
@@ -140,8 +122,8 @@ public class ActListaTicket extends AppCompatActivity
             }
         });
 
-
     }
+
 
 
     @Override
@@ -161,6 +143,15 @@ public class ActListaTicket extends AppCompatActivity
         return true;
     }
 
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        Toast.makeText(getApplicationContext(), "Atualizando!", Toast.LENGTH_SHORT).show();
+        ExibirListaTicket();
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
