@@ -7,7 +7,9 @@ public enum EnumMensagemErro {
     MENSAGEM_ERRO_ACESSO_INTERNET(2, "Não existe conexão com a internet!"),
     MENSAGEM_ERRO_PERMISSAO_INTERNET(3, "Permissão de acesso a internet não concedida"),
     MENSAGEM_ERRO_PREENCHA_TODOS_OS_CAMPOS(18, "Preencha todos os campo"),
-    MENSAGEM_ERRO_OBTER_LISTA_TICKET(19, "Erro ao pegar obter os Tickets");
+    MENSAGEM_ERRO_OBTER_LISTA_TICKET(19, "Erro ao pegar obter os Tickets"),
+    MENSAGEM_ERRO_USUARIO_NAO_INDENTIFICADO(19, "Usuário não identificado."),
+    MENSAGEM_ERRO_AO_IDENTIFICAR_USUARIO(19, "Erro ao indentificar usuario");
 
 
     private int id;
