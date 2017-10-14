@@ -1,6 +1,13 @@
 package br.com.insidegroup.insidecomerce;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +21,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import br.com.insidegroup.insidecomerce.Controles.Conexao;
 import br.com.insidegroup.insidecomerce.Controles.ControleSessao;
@@ -22,7 +31,10 @@ import br.com.insidegroup.insidecomerce.util.EnumMensagemErro;
 import br.com.insidegroup.insidecomerce.util.Erro;
 import br.com.insidegroup.insidecomerce.util.Util;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
         //c.startService(intent);
 
     }
+
+
+
 
 
     public void onClickBtnEntrar(View v){
