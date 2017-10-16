@@ -1,12 +1,14 @@
 package br.com.insidegroup.insidecomerce.util;
 
 
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Vibrator;
 import android.support.v7.app.NotificationCompat;
+import android.widget.Toast;
 
 import br.com.insidegroup.insidecomerce.MainActivity;
 import br.com.insidegroup.insidecomerce.R;
@@ -43,7 +45,12 @@ public class Util {
     }
 
 
+    public static void ExibirMensagemNaTela(Activity act, String msg) {
 
+        Toast toast = Toast.makeText(act, msg, Toast.LENGTH_LONG);
+        toast.show();
+
+    }
 
 
 
