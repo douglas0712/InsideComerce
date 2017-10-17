@@ -22,16 +22,9 @@
             android:layout_weight="10.50"
             android:text="" />
 
-        <ImageButton
-            android:id="@+id/imageButtonHistorico"
-            android:layout_width="35dp"
-            android:layout_marginLeft="300dp"
-            android:layout_height="match_parent"
-            app:srcCompat="?android:attr/actionModeFindDrawable" />
-
         <LinearLayout
             android:id="@+id/linearLayoutTicket"
-            android:layout_width="300dp"
+            android:layout_width="296dp"
             android:layout_height="90dp"
             android:orientation="vertical"
             android:weightSum="1">
@@ -51,10 +44,17 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="8dp"
-                android:text="descricao"
-                android:layout_weight="0.85" />
+                android:text="descricao" />
 
         </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="38dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="300dp"
+
+            />
 
     </android.support.v7.widget.CardView>
 

@@ -45,9 +45,9 @@ public class Util {
     }
 
 
-    public static void ExibirMensagemNaTela(Activity act, String msg) {
+    public static void ExibirMensagemNaTela(Context c, String msg) {
 
-        Toast toast = Toast.makeText(act, msg, Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(c, msg, Toast.LENGTH_LONG);
         toast.show();
 
     }
