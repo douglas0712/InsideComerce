@@ -12,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -98,6 +100,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         public TextView txtDescricao;
         public LinearLayout ticket;
         public TextView coresStatus;
+        public ImageButton historico;
 
 
         public ViewHolderTicket(View intentView) {
@@ -108,6 +111,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
             txtDescricao = (TextView)itemView.findViewById(R.id.txtDescricao);
             ticket = (LinearLayout)itemView.findViewById(R.id.linearLayoutTicket);
             coresStatus = (TextView) itemView.findViewById(R.id.textCores);
+            historico = (ImageButton) itemView.findViewById(R.id.imageButtonHistorico);
 
 
 

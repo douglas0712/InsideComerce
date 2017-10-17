@@ -12,4 +12,5 @@
     <string name="title_activity_data_hora">DataHora</string>
     <string name="title_activity_data_hora2">DataHora2</string>
     <string name="title_activity_act_agenda">ActAgenda</string>
+    <string name="title_activity_ticket_historico">TicketHistorico</string>
 </resources>
