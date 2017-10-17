@@ -1,5 +1,6 @@
 package br.com.insidegroup.insidecomerce.util;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import br.com.insidegroup.insidecomerce.ActListaTicket;
 import br.com.insidegroup.insidecomerce.R;
 import br.com.insidegroup.insidecomerce.entidades.DescricaoStatuTicket;
 import br.com.insidegroup.insidecomerce.entidades.Ticket;
@@ -29,7 +31,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
     private List<Ticket> dados;
     private View.OnClickListener listener;
-
+    private Context context;
 
     public TicketAdapter(List<Ticket> dados) {
         this.dados = dados;
@@ -39,6 +41,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     @Override
     public TicketAdapter.ViewHolderTicket onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        this.context = parent.getContext();
         View view = layoutInflater.inflate(R.layout.item_ticket, parent, false);
 
         ViewHolderTicket holderTicket =new ViewHolderTicket(view);
@@ -48,34 +51,45 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(TicketAdapter.ViewHolderTicket holder, int position) {
+    public void onBindViewHolder(TicketAdapter.ViewHolderTicket holder, final int position) {
 
 
 
-        if ((dados != null) && (dados.size() > 0)){
-            Ticket Ticket = dados.get(position);
-            String descricaoStatus = DescricaoStatuTicket.descricaoStatusTicket(Ticket.getStatus());
+        if ((dados == null) || (dados.size() <= 0))
+            return;
+
+        Ticket Ticket = dados.get(position);
+        String descricaoStatus = DescricaoStatuTicket.descricaoStatusTicket(Ticket.getStatus());
 
 
-            holder.txtNome.setText(Ticket.getDataCriacao() + " - " + descricaoStatus);
-            holder.txtDescricao.setText(Ticket.getRua() + ", "+ Ticket.getNumero() + "\n"+ Ticket.getBairro());
-            //holder.txtStatus.setText(Ticket.getStatus());
-            if(Ticket.getStatus() == 1){
-                holder.coresStatus.setBackgroundColor(Color.parseColor("#FFB1FF84"));
-            }else if(Ticket.getStatus() == 2){
-                holder.coresStatus.setBackgroundColor(Color.parseColor("#FFFFF68F"));
-            }else if(Ticket.getStatus() == 3){
-                holder.coresStatus.setBackgroundColor(Color.parseColor("#FFCED2D9"));
-            }else if(Ticket.getStatus() == 4){
-                holder.coresStatus.setBackgroundColor(Color.parseColor("#FFFF566C"));
-            }else if(Ticket.getStatus() == 5){
-                holder.coresStatus.setBackgroundColor(Color.parseColor("#FF9FC3F5"));
-            }else if(Ticket.getStatus() == 6){
-                holder.coresStatus.setBackgroundColor(Color.parseColor("#FFFFAF68"));
-            }else if(Ticket.getStatus() == 7){
-                holder.coresStatus.setBackgroundColor(Color.parseColor("#FF383838"));
+        holder.historico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.ExibirMensagemNaTela(context, "Teste "+position);
             }
+        });
+
+
+
+        holder.txtNome.setText(Ticket.getDataCriacao() + " - " + descricaoStatus);
+        holder.txtDescricao.setText(Ticket.getRua() + ", "+ Ticket.getNumero() + "\n"+ Ticket.getBairro());
+        //holder.txtStatus.setText(Ticket.getStatus());
+        if(Ticket.getStatus() == 1){
+            holder.coresStatus.setBackgroundColor(Color.parseColor("#FFB1FF84"));
+        }else if(Ticket.getStatus() == 2){
+            holder.coresStatus.setBackgroundColor(Color.parseColor("#FFFFF68F"));
+        }else if(Ticket.getStatus() == 3){
+            holder.coresStatus.setBackgroundColor(Color.parseColor("#FFCED2D9"));
+        }else if(Ticket.getStatus() == 4){
+            holder.coresStatus.setBackgroundColor(Color.parseColor("#FFFF566C"));
+        }else if(Ticket.getStatus() == 5){
+            holder.coresStatus.setBackgroundColor(Color.parseColor("#FF9FC3F5"));
+        }else if(Ticket.getStatus() == 6){
+            holder.coresStatus.setBackgroundColor(Color.parseColor("#FFFFAF68"));
+        }else if(Ticket.getStatus() == 7){
+            holder.coresStatus.setBackgroundColor(Color.parseColor("#FF383838"));
         }
+
 
     }
 
@@ -100,7 +114,9 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         public TextView txtDescricao;
         public LinearLayout ticket;
         public TextView coresStatus;
+        public Button btnteste;
         public ImageButton historico;
+
 
 
         public ViewHolderTicket(View intentView) {
@@ -111,7 +127,8 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
             txtDescricao = (TextView)itemView.findViewById(R.id.txtDescricao);
             ticket = (LinearLayout)itemView.findViewById(R.id.linearLayoutTicket);
             coresStatus = (TextView) itemView.findViewById(R.id.textCores);
-            historico = (ImageButton) itemView.findViewById(R.id.imageButtonHistorico);
+
+            historico = (ImageButton) itemView.findViewById(R.id.imageButton);
 
         }
 
