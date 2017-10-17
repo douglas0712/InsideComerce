@@ -113,9 +113,6 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
             coresStatus = (TextView) itemView.findViewById(R.id.textCores);
             historico = (ImageButton) itemView.findViewById(R.id.imageButtonHistorico);
 
-
-
-
         }
 
     }
