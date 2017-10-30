@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -54,7 +57,7 @@ public class TicketHistorico extends AppCompatActivity {
 
 
 
-        sql = "select convert(varchar(10), datacriacao, 103) + ' - ' + descricao descricao, descricao2 from ticket_historico where idTicket = "+ sessao.getTicket().getIdTicket();
+        sql = "select convert(varchar(10), datacriacao, 103) +'-'+ convert(varchar(10), datacriacao, 108) datacriacao, descricao, descricao2 from ticket_historico where idTicket = "+ sessao.getTicket().getIdTicket();
         try {
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
@@ -62,16 +65,20 @@ public class TicketHistorico extends AppCompatActivity {
             String texto = "";
             while(rs.next()){
 
+                String datacriacao = rs.getString("datacriacao");
                 String descricao = rs.getString("descricao");
                 String motivo = rs.getString("descricao2");
 
-                texto +=  descricao + "/n";
-                if(motivo != null)
-                    texto += "     Motivo: " +motivo +"/n/n";
+                texto +=  datacriacao + "\n" + descricao + "\n";
+                if(motivo != null && !motivo.equals(""))
+                    texto += "     Motivo: " +motivo +"\n\n";
 
-                texto += "/n";
+                texto += "\n";
 
             }
+
+            TextView historico = (TextView) findViewById(R.id.textViewHistorico);
+            historico.setText(texto);
 
             con.close();
 

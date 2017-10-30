@@ -53,8 +53,21 @@ public class Util {
     }
 
 
+    public static String convertDataParaFormatoBanco(String data){
+
+            String[] dataTemp;
+
+            dataTemp = data.split("/");
+            if(dataTemp[0].length() == 1){
+                dataTemp[0] = "0"+dataTemp[0];
+            }
+            if(dataTemp[1].length() == 1){
+                dataTemp[1] = "0"+dataTemp[1];
+            }
+            data = dataTemp[2] + "-" + dataTemp[1] + "-" + dataTemp[0];
 
 
-
+            return data;
+    }
 
 }

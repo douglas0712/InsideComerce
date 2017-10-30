@@ -31,7 +31,18 @@ public static List<Ticket> getListaTickets(String codUsuario) throws SQLExceptio
 
     stmt = con.createStatement();
 
-        sql = "SELECT * FROM TICKET WHERE VENDEDORVINCULADO = '"+ codUsuario +"'";
+        sql = "SELECT " +
+                "status," +
+                "rua," +
+                "numero," +
+                "bairro," +
+                "cidade," +
+                "estado," +
+                "convert(varchar(10), datacriacao, 103) + ' ' + convert(varchar(10), datacriacao, 108) datacriacao," +
+                "nomecontato," +
+                "telefonecontato," +
+                "id " +
+                "FROM TICKET WHERE VENDEDORVINCULADO = '"+ codUsuario +"'";
         rs = stmt.executeQuery(sql);
 
         while(rs.next()){
@@ -47,7 +58,6 @@ public static List<Ticket> getListaTickets(String codUsuario) throws SQLExceptio
             ticket.setTelefoneContato(rs.getString("telefoneContato"));
             ticket.setIdTicket(rs.getInt("id"));
             lstTicket.add(ticket);
-
         }
 
     return lstTicket;

@@ -37,14 +37,6 @@
             android:name=".ActTicketEmAndamento"
             android:label="@string/title_activity_act_ticket_em_andamento"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ActAgenda"
-            android:label="Act Agenda"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
 
         <receiver
             android:name=".BroadCastReceive"
@@ -61,7 +53,8 @@
         <activity
             android:name=".TicketHistorico"
             android:label="@string/title_activity_ticket_historico"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ActAgenda2"></activity>
     </application>
 
 </manifest>

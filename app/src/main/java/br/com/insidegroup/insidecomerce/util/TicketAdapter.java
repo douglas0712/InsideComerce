@@ -1,6 +1,7 @@
 package br.com.insidegroup.insidecomerce.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -22,8 +23,11 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.insidegroup.insidecomerce.ActListaTicket;
+import br.com.insidegroup.insidecomerce.MainActivity;
 import br.com.insidegroup.insidecomerce.R;
+import br.com.insidegroup.insidecomerce.TicketHistorico;
 import br.com.insidegroup.insidecomerce.entidades.DescricaoStatuTicket;
+import br.com.insidegroup.insidecomerce.entidades.Sessao;
 import br.com.insidegroup.insidecomerce.entidades.Ticket;
 
 
@@ -32,9 +36,11 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     private List<Ticket> dados;
     private View.OnClickListener listener;
     private Context context;
+    private Sessao sessao;
 
-    public TicketAdapter(List<Ticket> dados) {
+    public TicketAdapter(List<Ticket> dados, Context context) {
         this.dados = dados;
+        this.context = context;
 
     }
 
@@ -43,7 +49,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         this.context = parent.getContext();
         View view = layoutInflater.inflate(R.layout.item_ticket, parent, false);
-
+        this.sessao.getInstance();
         ViewHolderTicket holderTicket =new ViewHolderTicket(view);
         view.setOnClickListener(this);
 
@@ -58,14 +64,15 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         if ((dados == null) || (dados.size() <= 0))
             return;
 
-        Ticket Ticket = dados.get(position);
+        final Ticket Ticket = dados.get(position);
         String descricaoStatus = DescricaoStatuTicket.descricaoStatusTicket(Ticket.getStatus());
-
 
         holder.historico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Util.ExibirMensagemNaTela(context, "Teste "+position);
+                sessao.setTicket(Ticket);
+                Intent i = new Intent(context, TicketHistorico.class);
+                context.startActivity(i);
             }
         });
 
