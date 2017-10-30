@@ -92,7 +92,7 @@ public class ActListaTicket extends AppCompatActivity
 
     public void setarListaTicketNoAdaptador(final List<Ticket> lstTicket, final Sessao sessao) {
 
-        TicketAdapter ticketAdapter= new TicketAdapter(lstTicket);
+        TicketAdapter ticketAdapter= new TicketAdapter(lstTicket, this);
         recicleViewListaDados.setAdapter(ticketAdapter);
 
         ticketAdapter.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +114,9 @@ public class ActListaTicket extends AppCompatActivity
                 }else if(ticketSelecionado.getStatus() == 5) {
 
                 }else if(ticketSelecionado.getStatus() == 6) {
+                    sessao.setTicket(ticketSelecionado);
+                    Intent it = new Intent(ActListaTicket.this, ActTicketEmAndamento.class);
+                    startActivity(it);
 
                 }else if(ticketSelecionado.getStatus() == 7) {
 
@@ -160,10 +163,8 @@ public class ActListaTicket extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.Agenda) {
-            Intent it = new Intent(ActListaTicket.this, ActAgenda.class);
+            Intent it = new Intent(ActListaTicket.this, ActAgenda2.class);
             startActivity(it);
-        } else if (id == R.id.ListaTicket) {
-
         } else if (id == R.id.Sair) {
             finish();
         }

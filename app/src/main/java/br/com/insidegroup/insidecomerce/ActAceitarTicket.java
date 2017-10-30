@@ -36,8 +36,8 @@ public class ActAceitarTicket extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Boolean alteraStatus = AlteraStatusTicket.AlteraStatusTicket(sessao.getTicket(), 2, "");
-                Toast.makeText(ActAceitarTicket.this, "Ticket Aceito"+alteraStatus.toString(), Toast.LENGTH_SHORT).show();
+                AlteraStatusTicket.AlteraStatusTicket(sessao.getTicket(), 2, "");
+                Toast.makeText(ActAceitarTicket.this, "Ticket Aceito", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -77,7 +77,7 @@ public class ActAceitarTicket extends AppCompatActivity {
             public void onClick(View arg0) {
                 EditText eMotivo = (EditText) view.findViewById(R.id.editTextMotivoRecusa);
                 String motivo = eMotivo.getText().toString();
-                Boolean alteraStatus = AlteraStatusTicket.AlteraStatusTicket(sessao.getTicket(), 7, motivo);
+                AlteraStatusTicket.AlteraStatusTicket(sessao.getTicket(), 7, motivo);
                 alerta.dismiss();
                 finish();
                 Toast.makeText(ActAceitarTicket.this, "Ticket Recusado", Toast.LENGTH_SHORT).show();

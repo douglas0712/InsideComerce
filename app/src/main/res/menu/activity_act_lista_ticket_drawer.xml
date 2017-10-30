@@ -6,10 +6,6 @@
             android:id="@+id/Agenda"
             android:icon="@drawable/ic_menu_send"
             android:title="Agenda" />
-        <item
-            android:id="@+id/ListaTicket"
-            android:icon="@drawable/ic_menu_send"
-            android:title="Listar Tickets" />
 
     </group>
 

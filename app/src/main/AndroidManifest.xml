@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.insidegroup.insidecomerce">
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -36,18 +36,7 @@
         <activity
             android:name=".ActTicketEmAndamento"
             android:label="@string/title_activity_act_ticket_em_andamento"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".ActAgenda"
-            android:label="Act Agenda"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver
             android:name=".BroadCastReceive"
@@ -56,11 +45,16 @@
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="edu.cs4730.broadcastboot.myAction" />
-                <category android:name="android.intent.category.DEFAULT" />
 
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
+        <activity
+            android:name=".TicketHistorico"
+            android:label="@string/title_activity_ticket_historico"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ActAgenda2"></activity>
     </application>
 
 </manifest>
